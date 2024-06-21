@@ -12,9 +12,9 @@ if (SignInButton != null) {
     })
 }
 let myAllUsers = [];
-// if (localStorage.getItem(myAllUsers) != null) {
+if (localStorage.getItem(myAllUsers) != null) {
     myAllUsers = JSON.parse(localStorage.getItem('myAllUsers'));
-// }
+}
 // console.log(myAllUsers)
 // console.log(JSON.parse(localStorage.getItem('allProduct')));
 function addUser() {
@@ -111,13 +111,13 @@ if (loginButton != null) {
 let myLayer = document.querySelector('.my-layer');
 let Logout = document.querySelector('.Logout');
 
-// if(Logout!= null ){
+if(Logout!= null ){
 
     Logout.addEventListener('click', function(){
         location.assign('./index.html')
     });
 
-// }
+}
 myLayer.innerHTML = `Welcome ${JSON.parse(localStorage.getItem('usernmae'))}`
 
 // End home page
