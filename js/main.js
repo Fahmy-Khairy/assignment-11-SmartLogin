@@ -11,17 +11,13 @@ if (SignInButton != null) {
         location.assign('./index.html');
     })
 }
-let myAllUsers = [];
-if (localStorage.getItem(myAllUsers) != null) {
-    myAllUsers = JSON.parse(localStorage.getItem('myAllUsers'));
-<<<<<<< HEAD
-}
-=======
- }
->>>>>>> 924f4c2592083a661130788fc55f369312466bab
-// console.log(myAllUsers)
-// console.log(JSON.parse(localStorage.getItem('allProduct')));
+var myAllUsers = [];
+
+console.log(JSON.parse(localStorage.getItem('myAllUsers')));
 function addUser() {
+    if (localStorage.getItem(myAllUsers) != null) {
+        myAllUsers = JSON.parse(localStorage.getItem('myAllUsers'));
+    }
     let userInfo = {
         name: userName.value,
         email: userEmail.value,
@@ -49,20 +45,20 @@ if (SignUpButton != null) {
             addUser();
             AlreadyExist.classList.replace('text-danger', 'text-success')
             AlreadyExist.innerHTML = 'Success';
+            location.assign('./index.html')
         }
     })
 }
 
-// End sigIn page 
+// End sigIn page ===========================
 
-// start index page 
+// start index page ==================================
 let signUpPage = document.querySelector('#forSignup');
 let inputEmail = document.querySelector('#floatingEmail');
 let inputPassword = document.querySelector('#floatingPassword');
 let incorrectEmailOrPassword = document.querySelector('.incorrectEmailOrPassword');
 let AllInputsRequired = document.querySelector('.AllInputsRequired');
 let loginButton = document.querySelector('.login')
-// console.log(loginButton)
 if (signUpPage != null) {
     signUpPage.addEventListener('click', function () {
         location.assign('./signin.html');
@@ -71,33 +67,27 @@ if (signUpPage != null) {
 if (loginButton != null) {
     let isTrue = true
     loginButton.addEventListener('click', function () {
-        // for (const userInfo of myAllUsers) {
-        //     if (userInfo.email==inputEmail.value && userInfo.pass == inputPassword.value ){
-        //         location.href = './home.html'
-        //         console.log(true);
-        //     }}
+        myAllUsers = JSON.parse(localStorage.getItem('myAllUsers'))
+        // console.log(myAllUsers)
         if (inputEmail.value == "" || inputPassword.value == "") {
             AllInputsRequired.classList.remove('d-none');
         }
         else {
-            for (let i = 0; i < myAllUsers.length; i++) {
-                // if (myAllUsers[i].email == inputEmail.value && myAllUsers[i].pass == inputPassword.value ){
-                //     isTrue = false
-                //     console.log(isTrue);
-                // }
+            for (let i = 0; i < myAllUsers.length; i++) {   
+                // myAllUsers = JSON.parse(localStorage.getItem('myAllUsers'))
                 if (myAllUsers[i].email == inputEmail.value && myAllUsers[i].pass == inputPassword.value) {
                     location.href = './home.html'
                     console.log(true);
-                    localStorage.setItem('usernmae' ,JSON.stringify(myAllUsers[i].name))
+                    localStorage.setItem('usernmae', JSON.stringify(myAllUsers[i].name))
                 }
-                else{
+                else {
                     incorrectEmailOrPassword.classList.remove('d-none');
                     AllInputsRequired.classList.add('d-none');
                 }
             }
             // console.log('error');
             // console.log(JSON.parse(localStorage.getItem('myAllUsers')));
-            
+
         }
         // if (isTrue == false) {
         //     location.href = './home.html'
@@ -112,25 +102,18 @@ if (loginButton != null) {
 
 // start home page
 
-let myLayer = document.querySelector('.my-layer');
+let myH2 = document.querySelector('.myH2');
 let Logout = document.querySelector('.Logout');
 
-<<<<<<< HEAD
-if(Logout!= null ){
-=======
- if(Logout != null ){
->>>>>>> 924f4c2592083a661130788fc55f369312466bab
-
-    Logout.addEventListener('click', function(){
+if (Logout != null) {
+    Logout.addEventListener('click', function () {
         location.assign('./index.html')
     });
 
-<<<<<<< HEAD
 }
-=======
- }
->>>>>>> 924f4c2592083a661130788fc55f369312466bab
-myLayer.innerHTML = `Welcome ${JSON.parse(localStorage.getItem('usernmae'))}`
+if (myH2 != null) {
+    myH2.innerHTML = `Welcome ${JSON.parse(localStorage.getItem('usernmae'))}`
+}
 
 // End home page
 
